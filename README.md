@@ -2,4 +2,4 @@
 
 
 An app to play Stone Paper Scissor with me!!
-<img src='images/Result1'>
+<img src='images/Result1.jpg'>
