@@ -29,9 +29,9 @@ class _DicePageState extends State<DicePage> {
   int firstuser = 1;
   int seconduser = 2;
 
-  void changeDiceFace() {
+  void changeHand() {
     setState(() {
-      firstuser = Random().nextInt(3) + 1; //(0-2)+1
+       //(0-2)+1
       seconduser = Random().nextInt(3) + 1;
       String play= ' ';
     });
@@ -53,14 +53,43 @@ class _DicePageState extends State<DicePage> {
               ),
             ),
           ),
+          Text('Choose one'),
           Expanded(
-            child: FlatButton(
-              onPressed: () {
-                changeDiceFace();
-              },
-              child: Image.asset('images/item$firstuser.png',
-                  semanticLabel: 'Player 1'),
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: OutlineButton(
+                    onPressed: () {
+                      firstuser =1;
+                      changeHand();
+                    },
+                    child: Text('✊'),
+                  ),
+                ),
+                Expanded(
+                  child: OutlineButton(
+                    onPressed: () {
+                      firstuser =2;
+                      changeHand();
+                    },
+                    child: Text('🤚'),
+                  ),
+                ),
+                Expanded(
+                  child: OutlineButton(
+                    onPressed: () {
+                      firstuser =3;
+                      changeHand();
+                    },
+                    child: Text('✌'),
+                  ),
+                ),
+              ],
             ),
+          ),
+          Expanded(
+            child: Image.asset('images/item$firstuser.png',
+                semanticLabel: 'Player 1'),
           ),
           Expanded(
             child: Text(
