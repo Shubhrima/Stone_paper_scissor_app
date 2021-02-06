@@ -1,17 +1,16 @@
-<h4> Stone Paper Scissor </h4>
+# stone_paper_scissor
 
+A new Flutter application.
 
-An app to play Stone Paper Scissor with me!!
-<br>
-<table>
-  <tr>
-    <td>
-      <img src='images/Result1.jpg' width='200' height='350'></td>
-    <td>
-      <img src='images/Result2.jpg' width='200' height='350'></td>
-  </tr>
-  </table>
+## Getting Started
 
+This project is a starting point for a Flutter application.
 
+A few resources to get you started if this is your first Flutter project:
 
-<img src='images/Result3.jpg' width='200' height='350'>
+- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+
+For help getting started with Flutter, view our
+[online documentation](https://flutter.dev/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
