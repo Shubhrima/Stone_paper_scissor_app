@@ -28,44 +28,38 @@ class DicePage extends StatefulWidget {
 class _DicePageState extends State<DicePage> {
   int firstuser = 1;
   int seconduser = 2;
-  int number = 1;
-  int score=0;
+  int number = 0;
+  int score1 = 0;
+  int scoreS = 0;
+
+  List<Icon> scoreKeeper = [];
 
   Icon red() {
+    print(number);
     print('lost');
-    return Icon(Icons.adjust_outlined, color: Colors.red);
+    scoreS++;
+    scoreKeeper.add(Icon(Icons.adjust_outlined, color: Colors.red));
   }
 
   Icon yellow() {
+    print(number);
     print('draw');
-    return Icon(Icons.adjust_outlined, color: Colors.yellow);
+    scoreKeeper.add(Icon(Icons.adjust_outlined, color: Colors.yellow));
   }
 
   Icon green() {
-    score++;
+    print(number);
+    score1++;
     print('won');
-    return Icon(Icons.adjust_outlined, color: Colors.green);
+    scoreKeeper.add(Icon(Icons.adjust_outlined, color: Colors.green));
   }
 
-  List<Icon> scoreKeeper = [
-    Icon(Icons.adjust_outlined, color: Colors.grey),
-   /* Icon(Icons.adjust_outlined, color: Colors.grey),
-    Icon(Icons.adjust_outlined, color: Colors.grey),
-    Icon(Icons.adjust_outlined, color: Colors.grey),
-    Icon(Icons.adjust_outlined, color: Colors.grey),
-    Icon(Icons.adjust_outlined, color: Colors.grey),
-    Icon(Icons.adjust_outlined, color: Colors.grey),
-    Icon(Icons.adjust_outlined, color: Colors.grey),
-    Icon(Icons.adjust_outlined, color: Colors.grey),
-    Icon(Icons.adjust_outlined, color: Colors.grey),*/
-  ];
   void changeHand() {
-    if (number < 10) {
+    if (number < 9) {
       setState(() {
         number++;
         //(0-2)+1
         seconduser = Random().nextInt(3) + 1;
-        String play = ' ';
       });
       if (seconduser == firstuser) {
         yellow();
@@ -89,11 +83,28 @@ class _DicePageState extends State<DicePage> {
         }
       }
     } else {
+      if (score1 > scoreS) {
+        var analysis = 'Hurray!!! You Won';
+        print(analysis);
+      } else if (score1 < scoreS) {
+        var analysis = 'Ooops! You lost the game.';
+        print(analysis);
+      } else {
+        var analysis = 'It is a draw match!';
+        print(analysis);
+      }
+
       showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
-          title: Text("Score"),
-          content: Text("You scored $score"),
+          title: Text(
+            "Score",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          content:
+              Text("Your score: $score1. \nShubhrima's score: $scoreS. \n"),
           actions: <Widget>[
             FlatButton(
               onPressed: () {
@@ -105,10 +116,12 @@ class _DicePageState extends State<DicePage> {
         ),
       );
       print('Start New Game');
-      number =0;
+      number = 0;
       changeHand();
+      scoreKeeper.removeRange(0,scoreKeeper.length-1);
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -192,22 +205,7 @@ class _DicePageState extends State<DicePage> {
         Row(
           children: scoreKeeper,
         ),
-        Row(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(left: 150),
-              child: OutlineButton(
-                onPressed: () {
-                  number =0;
-                  score=0;
-                  changeHand();
 
-                },
-                child: Text('New Game'),
-              ),
-            ),
-          ],
-        ),
       ]),
     );
   }
