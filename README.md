@@ -3,7 +3,7 @@
 This is an App, that allows players to play  Stone Paper Scissor with Shubhrima(me).
 Each Round consists of 10 moves, and scores are viewed at the end.
 
-[![Watch the video]()](https://github.com/Shubhrima/Stone_paper_scissor_app/blob/master/screenshot.mp4)
+<video src="screenshot.mp4>
 
 A new Flutter application.
 
